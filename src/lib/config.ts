@@ -1,3 +1,4 @@
+// API config stuff
 export const config = {
     api: {
         baseUrl: process.env.SURGE_API_BASE_URL,
