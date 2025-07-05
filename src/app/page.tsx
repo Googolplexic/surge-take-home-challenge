@@ -47,22 +47,20 @@ export default function Home() {
 
   useEffect(() => {
     const initializeData = async () => {
-      // First fetch initial data
+
       await fetchData();
 
-      // Fetch image
       fetchImage('grouse mountain Vancouver, BC').then(image => {
         setImageUrl(image.url || '');
       });
 
-      // Sample POST test data
       const sampleHighlight = {
         title: 'Sample Highlight',
         location: 'my house',
         description: 'Testing ',
       };
 
-      // Post new highlight and then fetch updated data
+
       // await postHighlight(sampleHighlight);
       await fetchData(); 
     };

@@ -4,6 +4,9 @@ import { config } from '@/lib/config';
 export async function GET() {
     const response = await fetch(`${config.api.baseUrl}/getreviews/${config.api.uuid}`);
     const data = await response.json();
+    if (!response.ok) {
+        return NextResponse.json({ error: 'Failed to fetch reviews' }, { status: response.status });
+    }
     return NextResponse.json(data);
 }
 
