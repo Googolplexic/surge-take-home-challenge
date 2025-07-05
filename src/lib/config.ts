@@ -1,7 +1,7 @@
 export const config = {
     api: {
-        baseUrl: process.env.SURGE_API_BASE_URL || 'https://surgetakehome.vercel.app/api',
-        uuid: process.env.SURGE_UUID || 'revenant'
+        baseUrl: process.env.SURGE_API_BASE_URL,
+        uuid: process.env.SURGE_UUID
     }
 } as const;
 
