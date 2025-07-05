@@ -43,7 +43,8 @@ export async function GET(request: Request) {
         }
         
         return NextResponse.json({ error: 'No valid images found' }, { status: 404 });
-    } catch (error) {
-        return NextResponse.json({ error: 'Failed to fetch image' }, { status: 500 });
+    } catch (error: unknown) {
+        const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+        return NextResponse.json({ error: 'Failed to fetch image: ' + errorMessage }, { status: 500 });
     }
 }

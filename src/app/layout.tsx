@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Header from "@/components/Header";
 
 export const metadata: Metadata = {
   title: "Highlights SFU Surge Take Home Challenge",
@@ -14,7 +15,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        {children}
+        <div className="app-layout">
+
+          <Header />
+
+          <main className="main-content">
+            {children}
+          </main>
+
+        </div>
       </body>
     </html>
   );

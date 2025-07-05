@@ -1,14 +1,16 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { CreateHighlightRequest } from '@/types/highlight'; // Adjust the import path as necessary
+
+import { CreateHighlightRequest, HighlightProps } from '@/types/types';
+import HighlightsGrid from '@/components/highlights/HighlightsGrid';
+import CreateButtonWrapper from '@/components/highlightCreation/CreateButtonWrapper';
 
 export default function Home() {
-  const [data, setData] = useState(null);
-  const [imageUrl, setImageUrl] = useState('');
-  const [postResult, setPostResult] = useState(null);
+  const [data, setData] = useState<HighlightProps[] | null>(null);
 
-  // Sample test func for now
+  // Fetch highlights data from the API
+  // May have to tweak this in the future in case it refreshes unexpectedly; have to check
   const fetchData = async () => {
     const res = await fetch('/api/highlights');
     if (!res.ok) {
@@ -18,17 +20,7 @@ export default function Home() {
     setData(result);
   };
 
-  // Sample test funct for now
-  const fetchImage = async (prompt: string) => {
-    const res = await fetch(`/api/images?prompt=${encodeURIComponent(prompt)}`);
-    if (!res.ok) {
-      throw new Error('Failed to fetch image');
-    }
-    const image = await res.json();
-    return image;
-  };
-
-  // Sample test func for posting new highlight
+  // Post a new highlight
   const postHighlight = async (newHighlight: CreateHighlightRequest) => {
     const res = await fetch('/api/highlights', {
       method: 'POST',
@@ -41,43 +33,29 @@ export default function Home() {
       throw new Error('Failed to post highlight');
     }
     const result = await res.json();
-    setPostResult(result);
     return result;
   };
 
-  useEffect(() => {
-    const initializeData = async () => {
-
+  // Handle new highlight submission
+  // Will be called when the CreateButtonWrapper submits a new highlight
+  const handleNewHighlight = async (highlightData: HighlightProps) => {
+    try {
+      await postHighlight(highlightData);
       await fetchData();
+    } catch (error) {
+      console.error('Failed to create highlight:', error);
+    }
+  };
 
-      fetchImage('grouse mountain Vancouver, BC').then(image => {
-        setImageUrl(image.url || '');
-      });
-
-      const sampleHighlight = {
-        title: 'Sample Highlight',
-        location: 'my house',
-        description: 'Testing ',
-      };
-
-
-      // await postHighlight(sampleHighlight);
-      await fetchData(); 
-    };
-
-    initializeData();
+  // Fetch data on component mount
+  useEffect(() => {
+    fetchData();
   }, []);
 
   return (
     <div>
-      <h1>Image</h1>
-      {imageUrl && <img src={imageUrl} alt="Generated image" />}
-
-      <h1>API Data:</h1>
-      <pre>{JSON.stringify(data, null, 2)}</pre>
-
-      <h1>POST Result:</h1>
-      <pre>{JSON.stringify(postResult, null, 2)}</pre>
+      <HighlightsGrid highlights={data} />
+      <CreateButtonWrapper onSubmit={handleNewHighlight} />
     </div>
   );
 }
