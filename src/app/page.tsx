@@ -1,15 +1,15 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { CreateHighlightRequest } from '@/types/types'; // Adjust the import path as necessary
+
+import { CreateHighlightRequest, HighlightProps } from '@/types/types';
 import HighlightsGrid from '@/components/highlights/HighlightsGrid';
+import CreateButtonWrapper from '@/components/ui/CreateButtonWrapper';
 
 export default function Home() {
-  const [data, setData] = useState(null);
-  const [imageUrl, setImageUrl] = useState('');
-  const [postResult, setPostResult] = useState(null);
+  const [data, setData] = useState<HighlightProps[] | null>(null);
 
-  // Sample test func for now
+
   const fetchData = async () => {
     const res = await fetch('/api/highlights');
     if (!res.ok) {
@@ -19,17 +19,7 @@ export default function Home() {
     setData(result);
   };
 
-  // Sample test funct for now
-  const fetchImage = async (prompt: string) => {
-    const res = await fetch(`/api/images?prompt=${encodeURIComponent(prompt)}`);
-    if (!res.ok) {
-      throw new Error('Failed to fetch image');
-    }
-    const image = await res.json();
-    return image;
-  };
 
-  // Sample test func for posting new highlight
   const postHighlight = async (newHighlight: CreateHighlightRequest) => {
     const res = await fetch('/api/highlights', {
       method: 'POST',
@@ -42,53 +32,27 @@ export default function Home() {
       throw new Error('Failed to post highlight');
     }
     const result = await res.json();
-    setPostResult(result);
     return result;
   };
 
+
+  const handleNewHighlight = async (highlightData: HighlightProps) => {
+    try {
+      await postHighlight(highlightData);
+      await fetchData();
+    } catch (error) {
+      console.error('Failed to create highlight:', error);
+    }
+  };
   useEffect(() => {
-    const initializeData = async () => {
-
-      await fetchData();
-
-      fetchImage('grouse mountain Vancouver, BC').then(image => {
-        setImageUrl(image.url || '');
-      });
-
-      const sampleHighlight = {
-        title: 'Sample Highlight',
-        location: 'my house',
-        description: 'Testing ',
-      };
-
-
-      // await postHighlight(sampleHighlight);
-      await fetchData();
-    };
-
-    initializeData();
+    fetchData();
   }, []);
 
   return (
     <div>
       <HighlightsGrid highlights={data} />
+      <CreateButtonWrapper onSubmit={handleNewHighlight} />
 
-      {/* Temp debug div */}
-      <div className="debug-section">
-        <details>
-          <summary>Debug</summary>
-          <h3>Sample Image:</h3>
-          {imageUrl && <img src={imageUrl} alt="Generated image" className="debug-image" />}
-          <h3>API Data:</h3>
-          <pre className="debug-pre">
-            {JSON.stringify(data, null, 2)}
-          </pre>
-          <h3>POST Result:</h3>
-          <pre className="debug-pre">
-            {JSON.stringify(postResult, null, 2)}
-          </pre>
-        </details>
-      </div>
     </div>
   );
 }

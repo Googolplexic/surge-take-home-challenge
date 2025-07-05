@@ -1,5 +1,6 @@
 import { HighlightProps } from "@/types/types";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 export default function Highlight({ title, location, description }: HighlightProps) {
     const [imageUrl, setImageUrl] = useState<string>("");
@@ -33,16 +34,15 @@ export default function Highlight({ title, location, description }: HighlightPro
         }
     }, [title, location]);
 
-    return (
-        <div>
-            <h3>{title}</h3>
-            <p>{location}</p>
-            <p>{description}</p>
+return (!imageError && (
+    <div>
+        <h3>{title}</h3>
+        <p>{location}</p>
+        <p>{description}</p>
 
-            {imageError && <div>Failed to load image</div>}
-            {imageUrl && !imageError && (
-                <img src={imageUrl} alt={`${title} in ${location}`} />
-            )}
-        </div>
-    );
+        {imageUrl && !imageError && (
+            <Image src={imageUrl} alt={`${title} in ${location}`} width={500} height={300} />
+        )}
+    </div>
+));
 }

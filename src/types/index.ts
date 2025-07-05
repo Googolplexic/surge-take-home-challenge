@@ -4,5 +4,6 @@ export type { HighlightProps, CreateHighlightRequest } from './highlight';
 export type {
     CreateHighlightModalProps,
     CreateButtonProps,
-    HighlightsGridProps
+    HighlightsGridProps,
+    CreateButtonWrapperProps
 } from './components';

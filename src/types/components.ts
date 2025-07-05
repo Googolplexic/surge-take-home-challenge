@@ -13,3 +13,7 @@ export interface CreateButtonProps {
 export interface HighlightsGridProps {
     highlights?: HighlightProps[] | null;
 }
+export interface CreateButtonWrapperProps {
+    onSubmit?: (data: HighlightProps) => void;
+}
+

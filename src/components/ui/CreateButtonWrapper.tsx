@@ -3,9 +3,10 @@
 import { useState } from 'react';
 import CreateButton from './CreateButton';
 import CreateHighlightModal from './CreateHighlightModal';
-import { HighlightProps } from '@/types/types';
+import { HighlightProps, CreateButtonWrapperProps } from '@/types/types';
 
-export default function CreateButtonWrapper() {
+
+export default function CreateButtonWrapper({ onSubmit }: CreateButtonWrapperProps) {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const handleCreateClick = () => {
@@ -17,7 +18,9 @@ export default function CreateButtonWrapper() {
     };
 
     const handleSubmit = (data: HighlightProps) => {
-        console.log("data: " + JSON.stringify(data));
+        if (onSubmit) {
+            onSubmit(data);
+        }
         setIsModalOpen(false);
     };
 

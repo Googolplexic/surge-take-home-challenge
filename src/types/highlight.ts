@@ -9,3 +9,6 @@ export interface CreateHighlightRequest {
     location: string;
     description: string;
 }
+export interface CreateButtonWrapperProps {
+    onSubmit?: (data: HighlightProps) => void;
+}
