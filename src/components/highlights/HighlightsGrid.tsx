@@ -1,21 +1,26 @@
 import Highlight from "@/components/highlights/Hightlight";
-export default function HighlightsGrid() {
+import { HighlightsGridProps } from "@/types/types"; 
+
+
+export default function HighlightsGrid({ highlights }: HighlightsGridProps) {
+    if (!highlights) {
+        return <div>Loading...</div>;
+    }
+
+    const reversedHighlights = [...highlights].reverse();
+
     return (
         <section>
-            {/* Sample data for demonstration purposes */}
             <div>
-                <Highlight
-                    title="Hiking Grouse Mountain"
-                    location="Vancouver, BC"
-                    description="A beautiful view of Grouse Mountain."
-                />
-                <Highlight
-                    title="Skiing Whistler"
-                    location="Whistler, BC"
-                    description="A popular ski resort in Whistler."
-                />
+                {reversedHighlights.map((highlight, index) => (
+                    <Highlight
+                        key={index}
+                        title={highlight.title}
+                        location={highlight.location}
+                        description={highlight.description}
+                    />
+                ))}
             </div>
-
         </section>
     );
 }

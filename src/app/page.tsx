@@ -71,7 +71,7 @@ export default function Home() {
 
   return (
     <div>
-      <HighlightsGrid />
+      <HighlightsGrid highlights={data} />
 
       {/* Temp debug div */}
       <div className="debug-section">
