@@ -1,9 +1,11 @@
+import type { JSX } from 'react';
+
 // Simple header 
-export default function Header() {
+export default function Header(): JSX.Element {
     return (
         <header>
             <div>
-                
+
                 <h1>HIGHLIGHTS</h1>
                 <h2>What are the special moments of your life?</h2>
 
@@ -13,4 +15,3 @@ export default function Header() {
         </header>
     );
 }
-    
