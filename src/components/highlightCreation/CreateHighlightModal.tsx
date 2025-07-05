@@ -1,13 +1,14 @@
+import type { JSX } from 'react';
 import { CreateHighlightModalProps } from '@/types/types';
 
 // Modal component for creating a new highlight
-export default function CreateHighlightModal({ isOpen, onClose, onSubmit }: CreateHighlightModalProps) {
+export default function CreateHighlightModal({ isOpen, onClose, onSubmit }: CreateHighlightModalProps): JSX.Element | null {
     if (!isOpen) return null;
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
 
         // Prevent page refresh on form submission
-        e.preventDefault(); 
+        e.preventDefault();
 
         const formData = new FormData(e.currentTarget);
         const data = {

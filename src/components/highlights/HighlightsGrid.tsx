@@ -1,8 +1,9 @@
 import Highlight from "@/components/highlights/Highlight";
 import { HighlightsGridProps } from "@/types/types";
+import type { JSX } from "react";
 
 // Grid component to display highlights
-export default function HighlightsGrid({ highlights }: HighlightsGridProps) {
+export default function HighlightsGrid({ highlights }: HighlightsGridProps): JSX.Element {
     if (!highlights) {
         return <div>Loading...</div>;
     }

@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 
-export async function GET(request: Request) {
+export async function GET(request: Request): Promise<NextResponse> {
     const { searchParams } = new URL(request.url);
     const prompt = searchParams.get('prompt');
 
@@ -11,7 +11,7 @@ export async function GET(request: Request) {
     try {
         const params = new URLSearchParams({
             q: prompt,
-            license: 'cc0,pdm,by,by-sa,by-nc,by-nd,by-nc-sa,by-nc-nd', // License filters idk
+            license: 'cc0,pdm,by,by-sa,by-nc,by-nd,by-nc-sa,by-nc-nd', // License filters
             image_type: 'photograph,illustration',
             size: 'medium,large',
             page_size: '3' // 3 max tries

@@ -1,16 +1,26 @@
 @import "tailwindcss";
 
-:root {
-  --background: #FAFAFA;
-  --foreground: #000000;
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: Inter, Arial, Helvetica, sans-serif;
-  --font-mono: Inter, Arial, Helvetica, sans-serif;
+@theme {
+                          /* Mobile: 0-375px */
+  --breakpoint-md: 376px; /* Tablet: 376px-788px */
+  --breakpoint-lg: 789px; /* Desktop: 789px+ */
+
+  --color-background: theme(colors.neutral.50); /* #FAFAFA */
+  --color-foreground: theme(colors.black); /* #000000 */
+  --color-primary: theme(colors.red.500); /* #EC484B */
+
+  --font-body: Inter, Arial, Helvetica, sans-serif;
+  --font-heading: Inter, Arial, Helvetica, sans-serif;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans);
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-body);
+}
+
+.app-layout {
+  @apply p-6 gap-6;                    /* Mobile: padding: 24px, gap: 24px */
+  @apply md:p-10 md:gap-10;            /* Tablet: padding: 40px, gap: 40px */
+  @apply lg:px-20 lg:py-10 lg:gap-10;  /* Desktop: px: 80px, py: 40px, gap: 40px */
 }

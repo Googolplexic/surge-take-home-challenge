@@ -1,15 +1,16 @@
 import { HighlightProps } from "@/types/types";
 import { useState, useEffect } from "react";
+import type { JSX } from "react";
 import Image from "next/image";
 
 // Individual highlight component
-export default function Highlight({ title, location, description }: HighlightProps) {
+export default function Highlight({ title, location, description }: HighlightProps): JSX.Element | null {
     const [imageUrl, setImageUrl] = useState<string>("");
     const [imageError, setImageError] = useState<boolean>(false);
     const [imageLoading, setImageLoading] = useState<boolean>(false);
 
     useEffect(() => {
-        async function fetchImage() {
+        async function fetchImage(): Promise<void> {
             try {
                 setImageError(false);
                 setImageLoading(true);
@@ -39,17 +40,21 @@ export default function Highlight({ title, location, description }: HighlightPro
         }
     }, [title, location]);
 
-return (!imageError && (
-    <div>
-        <h3>{title}</h3>
-        <p>{location}</p>
-        <p>{description}</p>
+    if (imageError) {
+        return null;
+    }
 
-        {imageLoading && <div>Loading image...</div>}
-        
-        {imageUrl && !imageError && !imageLoading && (
-            <Image src={imageUrl} alt={`${title} in ${location}`} width={500} height={300} />
-        )}
-    </div>
-));
+    return (
+        <div>
+            <h3>{title}</h3>
+            <p>{location}</p>
+            <p>{description}</p>
+
+            {imageLoading && <div>Loading image...</div>}
+
+            {imageUrl && !imageError && !imageLoading && (
+                <Image src={imageUrl} alt={`${title} in ${location}`} width={500} height={300} />
+            )}
+        </div>
+    );
 }
