@@ -1,7 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { CreateHighlightRequest } from '@/types/highlight'; // Adjust the import path as necessary
+import { CreateHighlightRequest } from '@/types/types'; // Adjust the import path as necessary
+import HighlightsGrid from '@/components/highlights/HighlightsGrid';
 
 export default function Home() {
   const [data, setData] = useState(null);
@@ -62,7 +63,7 @@ export default function Home() {
 
 
       // await postHighlight(sampleHighlight);
-      await fetchData(); 
+      await fetchData();
     };
 
     initializeData();
@@ -70,14 +71,24 @@ export default function Home() {
 
   return (
     <div>
-      <h1>Image</h1>
-      {imageUrl && <img src={imageUrl} alt="Generated image" />}
+      <HighlightsGrid />
 
-      <h1>API Data:</h1>
-      <pre>{JSON.stringify(data, null, 2)}</pre>
-
-      <h1>POST Result:</h1>
-      <pre>{JSON.stringify(postResult, null, 2)}</pre>
+      {/* Temp debug div */}
+      <div className="debug-section">
+        <details>
+          <summary>Debug</summary>
+          <h3>Sample Image:</h3>
+          {imageUrl && <img src={imageUrl} alt="Generated image" className="debug-image" />}
+          <h3>API Data:</h3>
+          <pre className="debug-pre">
+            {JSON.stringify(data, null, 2)}
+          </pre>
+          <h3>POST Result:</h3>
+          <pre className="debug-pre">
+            {JSON.stringify(postResult, null, 2)}
+          </pre>
+        </details>
+      </div>
     </div>
   );
 }
