@@ -3,7 +3,7 @@ import { HighlightProps } from './highlight';
 export interface CreateHighlightModalProps {
     isOpen: boolean;
     onClose: () => void;
-    onSubmit: (data: any) => void;
+    onSubmit: (data: HighlightProps) => void;
 }
 
 export interface CreateButtonProps {
