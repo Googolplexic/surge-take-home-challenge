@@ -1,17 +1,19 @@
-import Highlight from "@/components/highlights/Hightlight";
-import { HighlightsGridProps } from "@/types/types"; 
+import Highlight from "@/components/highlights/Highlight";
+import { HighlightsGridProps } from "@/types/types";
 
-
+// Grid component to display highlights
 export default function HighlightsGrid({ highlights }: HighlightsGridProps) {
     if (!highlights) {
         return <div>Loading...</div>;
     }
 
+    {/* Newest to oldest */ }
     const reversedHighlights = [...highlights].reverse();
 
     return (
         <section>
             <div>
+
                 {reversedHighlights.map((highlight, index) => (
                     <Highlight
                         key={index}

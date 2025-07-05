@@ -5,7 +5,7 @@ import CreateButton from './CreateButton';
 import CreateHighlightModal from './CreateHighlightModal';
 import { HighlightProps, CreateButtonWrapperProps } from '@/types/types';
 
-
+// Wrapper is needed since the CreateButton and CreateHighlightModal are not in the same file
 export default function CreateButtonWrapper({ onSubmit }: CreateButtonWrapperProps) {
     const [isModalOpen, setIsModalOpen] = useState(false);
 

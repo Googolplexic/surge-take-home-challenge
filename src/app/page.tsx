@@ -4,12 +4,13 @@ import { useState, useEffect } from 'react';
 
 import { CreateHighlightRequest, HighlightProps } from '@/types/types';
 import HighlightsGrid from '@/components/highlights/HighlightsGrid';
-import CreateButtonWrapper from '@/components/ui/CreateButtonWrapper';
+import CreateButtonWrapper from '@/components/highlightCreation/CreateButtonWrapper';
 
 export default function Home() {
   const [data, setData] = useState<HighlightProps[] | null>(null);
 
-
+  // Fetch highlights data from the API
+  // May have to tweak this in the future in case it refreshes unexpectedly; have to check
   const fetchData = async () => {
     const res = await fetch('/api/highlights');
     if (!res.ok) {
@@ -19,7 +20,7 @@ export default function Home() {
     setData(result);
   };
 
-
+  // Post a new highlight
   const postHighlight = async (newHighlight: CreateHighlightRequest) => {
     const res = await fetch('/api/highlights', {
       method: 'POST',
@@ -35,7 +36,8 @@ export default function Home() {
     return result;
   };
 
-
+  // Handle new highlight submission
+  // Will be called when the CreateButtonWrapper submits a new highlight
   const handleNewHighlight = async (highlightData: HighlightProps) => {
     try {
       await postHighlight(highlightData);
@@ -44,6 +46,8 @@ export default function Home() {
       console.error('Failed to create highlight:', error);
     }
   };
+
+  // Fetch data on component mount
   useEffect(() => {
     fetchData();
   }, []);
@@ -52,7 +56,6 @@ export default function Home() {
     <div>
       <HighlightsGrid highlights={data} />
       <CreateButtonWrapper onSubmit={handleNewHighlight} />
-
     </div>
   );
 }
