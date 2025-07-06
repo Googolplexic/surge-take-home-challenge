@@ -1,5 +1,6 @@
 @import "./app.css";
 @import "./highlight.css";
+@import "./highlightCreation.css";
 @import "tailwindcss";
 
 @theme {
