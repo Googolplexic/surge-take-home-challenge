@@ -132,7 +132,6 @@
     @apply bg-gray-100;
 }
 
-/* Prevent background scroll when modal is open */
 .modal-open {
     @apply overflow-hidden;
 }

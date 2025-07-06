@@ -11,6 +11,7 @@ export default function Highlight({ title, location, description }: HighlightPro
     const [imageUrl, setImageUrl] = useState<string>("");
     const [imageError, setImageError] = useState<boolean>(false);
     const [imageLoading, setImageLoading] = useState<boolean>(false);
+    const [imageRendered, setImageRendered] = useState<boolean>(false);
 
     useEffect(() => {
         async function tryFetchImage(prompt: string): Promise<boolean> {
@@ -29,13 +30,13 @@ export default function Highlight({ title, location, description }: HighlightPro
             try {
                 const response = await fetch(`/api/images?prompt=${encodeURIComponent(prompt)}`);
                 const imageData = await response.json();
-                
+
                 if (response.ok && imageData.url) {
                     imageCache.set(prompt, imageData.url);
                     setImageUrl(imageData.url);
                     return true;
                 }
-                
+
                 throw new Error('No image URL returned');
             } catch (error) {
                 console.log('Failed to fetch image with prompt:', prompt, error);
@@ -47,6 +48,7 @@ export default function Highlight({ title, location, description }: HighlightPro
         async function fetchImage(): Promise<void> {
             setImageError(false);
             setImageLoading(true);
+            setImageRendered(false);
 
             // Fallback prompts in order of preference
             const fallbackPrompts = [
@@ -84,18 +86,27 @@ export default function Highlight({ title, location, description }: HighlightPro
     }
 
     return (
-        <div className="highlight">
-            {imageLoading && <div>Loading image...</div>}
-
+        <div className={`highlight ${imageLoading ? 'highlight-loading' : 'fade-in'}`}>
             {imageUrl && !imageError && !imageLoading && (
-                <Image className="highlight-image" src={imageUrl} alt={`${title} in ${location}`} width={500} height={300} />
+                <Image
+                    className={`highlight-image ${imageRendered ? 'fade-in' : 'invisible'}`}
+                    src={imageUrl}
+                    alt={`${title} in ${location}`}
+                    width={500}
+                    height={300}
+                    onLoad={() => setImageRendered(true)}
+                />
             )}
 
-            <div className="highlight-header">
-                <h3 className="highlight-title">{title}</h3>
-                <p className="highlight-location">{location}</p>
-            </div>
-            <p className="highlight-description">{description}</p>
+            {!imageLoading && (
+                <>
+                    <div className="highlight-header">
+                        <h3 className="highlight-title">{title}</h3>
+                        <p className="highlight-location">{location}</p>
+                    </div>
+                    <p className="highlight-description">{description}</p>
+                </>
+            )}
         </div>
     );
 }

@@ -12,6 +12,10 @@
     @apply w-full h-fit rounded-xl p-5 flex flex-col gap-2 opacity-90 border border-[#F3F3F3] bg-white;
 }
 
+.highlight-loading {
+    @apply min-h-[322px];
+}
+
 .highlight-image {
     @apply w-full aspect-video object-cover rounded-xl mb-2;
 }

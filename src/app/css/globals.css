@@ -22,3 +22,21 @@ body {
   font-family: var(--font-body);
 }
 
+
+.fade-in {
+  animation: fadeIn 300ms ease-in-out;
+}
+
+.invisible {
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.9;
+  }
+}
+
