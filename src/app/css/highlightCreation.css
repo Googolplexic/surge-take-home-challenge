@@ -19,7 +19,30 @@
 }
 
 .modal-container {
-    @apply fixed w-screen h-screen inset-0 flex items-center justify-center z-50 bg-black/25 ;
+    @apply fixed w-screen h-screen inset-0 flex items-center justify-center z-50 bg-black/25;
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+.modal-closing {
+    animation: fadeOut 0.3s ease-out;
 }
 
 .create-highlight-modal {
