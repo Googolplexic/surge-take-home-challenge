@@ -1,12 +1,12 @@
 .create-button {
-    @apply w-[117px] h-[44px] flex items-center justify-center gap-2.5 text-white px-5 py-0.5 cursor-pointer opacity-100 bottom-[50px] right-[40px] rounded-xl border-none fixed z-10 p-px bg-gradient-to-b from-[#F47274] to-[#DB272A];
+    @apply w-[117px] h-[44px] flex items-center justify-center gap-2.5 text-white px-5 py-0.5 cursor-pointer opacity-100 bottom-[50px] right-[40px] rounded-xl border-none fixed z-10 p-px bg-gradient-to-b from-[#F47274] to-[#DB272A] transition-all duration-300;
 }
 .create-button:hover {
     @apply bg-gradient-to-b from-[#EC484B] to-[#BE181B];
 }
 
 .create-button::before {
-    @apply content-[''] absolute inset-[1.25px] bg-[#EC484B] rounded-[11px] z-0;
+    @apply content-[''] absolute inset-[1.25px] bg-[#EC484B] rounded-[11px] z-0 transition-all duration-300;
 }
 .create-button:hover::before {
     @apply bg-[#F11548];
