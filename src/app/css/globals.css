@@ -1,3 +1,6 @@
+@import "./app.css";
+@import "./highlight.css";
+@import "./highlightCreation.css";
 @import "tailwindcss";
 
 @theme {
@@ -19,8 +22,21 @@ body {
   font-family: var(--font-body);
 }
 
-.app-layout {
-  @apply p-6 gap-6;                    /* Mobile: padding: 24px, gap: 24px */
-  @apply md:p-10 md:gap-10;            /* Tablet: padding: 40px, gap: 40px */
-  @apply lg:px-20 lg:py-10 lg:gap-10;  /* Desktop: px: 80px, py: 40px, gap: 40px */
+
+.fade-in {
+  animation: fadeIn 300ms ease-in-out;
 }
+
+.invisible {
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.9;
+  }
+}
+

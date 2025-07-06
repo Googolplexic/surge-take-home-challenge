@@ -1,0 +1,29 @@
+.app-layout {
+    @apply flex flex-col;
+    @apply p-6 gap-6;                    /* Mobile: padding: 24px, gap: 24px */
+    @apply md:p-10 md:gap-10;            /* Tablet: padding: 40px, gap: 40px */
+    @apply lg:px-20 lg:py-10 lg:gap-10;  /* Desktop: px: 80px, py: 40px, gap: 40px */
+}
+
+.header-content {
+    @apply w-full flex flex-col gap-4; 
+    @apply md:max-w-[600px];
+    @apply lg:max-w-[660px];
+}
+
+.header-titles {
+    @apply flex flex-col gap-2;
+}
+
+.header-title {
+    @apply text-primary;
+    @apply text-xs font-semibold leading-tight align-middle tracking-[-1%];
+}
+
+.header-subtitle {
+    @apply text-[29px] font-semibold leading-[113%] tracking-[-1.5%] align-middle;
+}
+
+.header-description {
+    @apply text-base font-normal leading-[150%] tracking-[-0.75%] align-middle;
+}

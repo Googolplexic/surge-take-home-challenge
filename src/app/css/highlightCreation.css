@@ -1,0 +1,137 @@
+.create-button {
+    @apply w-[117px] h-[44px] flex items-center justify-center gap-2.5 text-white px-5 py-0.5 cursor-pointer bottom-[20px] md:bottom-[50px] lg:bottom-[20px] right-[25px] rounded-xl border-none fixed z-10 bg-gradient-to-b from-[#F47274] to-[#DB272A] transition-all duration-300;
+}
+.create-button:hover {
+    @apply bg-gradient-to-b from-[#EC484B] to-[#BE181B];
+}
+
+.create-button::before {
+    @apply content-[''] absolute inset-[1.25px] bg-[#EC484B] rounded-[11px] z-0 transition-all duration-300;
+}
+.create-button:hover::before {
+    @apply bg-[#F11548];
+}
+.button-text {
+    @apply font-medium text-base leading-normal tracking-[-0.0075em] text-center align-middle relative z-10;
+}
+.button-icon {
+    @apply font-medium text-2xl leading-normal tracking-[-0.0075em] text-center relative z-10;
+}
+
+.modal-container {
+    @apply fixed w-screen h-screen inset-0 flex items-center justify-center z-50 bg-black/25;
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+.modal-closing {
+    animation: fadeOut 0.3s ease-out;
+}
+
+.create-highlight-modal {
+    @apply bg-white rounded-xl opacity-100 relative duration-300;
+    @apply w-[calc(100vw-25px)] max-w-[350px] h-[553px];
+    @apply md:max-w-[480px];
+    @apply lg:w-[550px];
+}
+
+.modal-header {
+    @apply flex justify-between items-center p-6 border-b border-[#F3F3F3];
+}
+
+.modal-title {
+    @apply text-xl font-semibold text-[#525252];
+}
+
+.modal-close-button {
+    @apply p-2.25 absolute right-2 top-2 hover:bg-[#858585] cursor-pointer rounded-lg;
+}
+
+.x-icon {
+    @apply h-4.5 w-4.5 text-[#525252];
+}
+
+.create-highlight-form {
+    @apply flex flex-col gap-4 px-6 py-10 h-[calc(100%-77px)];
+}
+
+.form-content {
+    @apply flex flex-col gap-6 flex-1;
+}
+
+.form-group {
+    @apply opacity-100 flex flex-col gap-2;
+}
+
+.form-label {
+    @apply text-sm font-medium leading-none tracking-[-0.0075em] text-gray-700;
+}
+.form-group input,
+.form-group textarea {
+    @apply w-full min-h-11 justify-between opacity-100 rounded-lg  border border-[#F3F3F3] bg-white/60 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent leading-none tracking-[-0.0075em];
+}
+.form-group input{
+    @apply pl-3;
+}
+.form-group textarea {
+    
+    @apply p-3 h-32 max-h-32;
+}
+
+
+.form-actions {
+    @apply flex flex-row gap-4 justify-end mt-auto;
+}
+
+.form-create-button {
+    @apply w-[100px] h-11 flex items-center justify-center gap-2.5 text-white font-medium text-base leading-normal tracking-[-0.0075em] text-center cursor-pointer rounded-xl border-none relative z-10 bg-gradient-to-b from-[#F47274] to-[#DB272A] transition-all duration-300;
+}
+
+.form-create-button:hover {
+    @apply bg-gradient-to-b from-[#EC484B] to-[#BE181B];
+}
+
+.form-create-button::before {
+    @apply content-[''] absolute inset-[1.25px] bg-[#FF0000] rounded-[11px] z-0 transition-all duration-300;
+}
+
+.form-create-button:hover::before {
+    @apply bg-[#F11548];
+}
+
+.form-cancel-button {
+    @apply w-[100px] h-11 flex items-center justify-center gap-2.5 text-black font-medium text-base leading-normal tracking-[-0.0075em] text-center cursor-pointer rounded-xl border-none relative z-10 bg-gradient-to-b from-[#F47274] to-[#DB272A] transition-all duration-300;
+}
+
+.form-cancel-button:hover::before {
+    @apply bg-[#F3F3F3];
+}
+
+.form-cancel-button::before {
+    @apply content-[''] absolute inset-[1.25px] bg-white rounded-[11px] z-0 transition-all duration-300;
+}
+
+.form-cancel-button:hover::before {
+    @apply bg-gray-100;
+}
+
+.modal-open {
+    @apply overflow-hidden;
+}
