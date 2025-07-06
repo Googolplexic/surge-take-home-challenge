@@ -57,17 +57,16 @@
 }
 
 .modal-title {
-    @apply text-xl font-semibold text-gray-800;
+    @apply text-xl font-semibold text-[#525252];
 }
 
 .modal-close-button {
-    @apply p-2.5 absolute right-2 top-2 hover:bg-[#858585] cursor-pointer rounded-lg;
+    @apply p-2.25 absolute right-2 top-2 hover:bg-[#858585] cursor-pointer rounded-lg;
 }
 
 .x-icon {
-    @apply h-5 w-5 text-gray-700;
+    @apply h-4.5 w-4.5 text-[#525252];
 }
-
 
 .create-highlight-form {
     @apply flex flex-col gap-4 px-6 py-10;
