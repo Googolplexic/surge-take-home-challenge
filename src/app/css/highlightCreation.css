@@ -69,8 +69,7 @@
 }
 
 .create-highlight-form {
-    @apply flex flex-col gap-4 px-6 py-10;
-    height: calc(100% - 77px); 
+    @apply flex flex-col gap-4 px-6 py-10 h-[calc(100%-77px)];
 }
 
 .form-content {
@@ -131,4 +130,9 @@
 
 .form-cancel-button:hover::before {
     @apply bg-gray-100;
+}
+
+/* Prevent background scroll when modal is open */
+.modal-open {
+    @apply overflow-hidden;
 }

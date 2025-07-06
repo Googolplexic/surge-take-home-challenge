@@ -13,6 +13,19 @@ export default function CreateHighlightModal({ isOpen, onClose, onSubmit }: Crea
         }
     }, [isOpen, isClosing]);
 
+
+    useEffect(() => {
+        if (isOpen) {
+            document.body.classList.add('modal-open');
+        } else {
+            document.body.classList.remove('modal-open');
+        }
+
+        return () => {
+            document.body.classList.remove('modal-open');
+        };
+    }, [isOpen]);
+
     const handleClose = () => {
         setIsClosing(true);
         setTimeout(() => {
