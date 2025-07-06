@@ -45,16 +45,20 @@ export default function Highlight({ title, location, description }: HighlightPro
     }
 
     return (
-        <div>
-            <h3>{title}</h3>
-            <p>{location}</p>
-            <p>{description}</p>
+        <div className="highlight">
 
             {imageLoading && <div>Loading image...</div>}
 
             {imageUrl && !imageError && !imageLoading && (
-                <Image src={imageUrl} alt={`${title} in ${location}`} width={500} height={300} />
+                <Image className="highlight-image" src={imageUrl} alt={`${title} in ${location}`} width={500} height={300} />
             )}
+            <div className="highlight-header">
+                <h3 className="highlight-title">{title}</h3>
+                <p className="highlight-location">{location}</p>
+            </div>
+            <p className="highlight-description">{description}</p>
+
+
         </div>
     );
 }

@@ -12,9 +12,7 @@ export default function HighlightsGrid({ highlights }: HighlightsGridProps): JSX
     const reversedHighlights = [...highlights].reverse();
 
     return (
-        <section>
-            <div>
-
+        <section className="highlights-grid">
                 {reversedHighlights.map((highlight, index) => (
                     <Highlight
                         key={index}
@@ -23,7 +21,6 @@ export default function HighlightsGrid({ highlights }: HighlightsGridProps): JSX
                         description={highlight.description}
                     />
                 ))}
-            </div>
         </section>
     );
 }
