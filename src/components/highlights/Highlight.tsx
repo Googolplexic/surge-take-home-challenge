@@ -3,6 +3,9 @@ import { useState, useEffect } from "react";
 import type { JSX } from "react";
 import Image from "next/image";
 
+// Cache for image URLs to prevent duplicate fetches/api calls
+const imageCache = new Map<string, string | null>();
+
 // Individual highlight component
 export default function Highlight({ title, location, description }: HighlightProps): JSX.Element | null {
     const [imageUrl, setImageUrl] = useState<string>("");
@@ -11,19 +14,32 @@ export default function Highlight({ title, location, description }: HighlightPro
 
     useEffect(() => {
         async function tryFetchImage(prompt: string): Promise<boolean> {
+            // Check cache first
+            if (imageCache.has(prompt)) {
+                const cachedUrl = imageCache.get(prompt);
+                if (cachedUrl) {
+                    setImageUrl(cachedUrl);
+                    return true;
+                } else {
+                    // null in cache means this prompt failed before
+                    return false;
+                }
+            }
+
             try {
                 const response = await fetch(`/api/images?prompt=${encodeURIComponent(prompt)}`);
-
-                if (response.ok) {
-                    const imageData = await response.json();
-                    if (imageData.url) {
-                        setImageUrl(imageData.url);
-                        return true;
-                    }
+                const imageData = await response.json();
+                
+                if (response.ok && imageData.url) {
+                    imageCache.set(prompt, imageData.url);
+                    setImageUrl(imageData.url);
+                    return true;
                 }
-                return false;
+                
+                throw new Error('No image URL returned');
             } catch (error) {
                 console.error('Failed to fetch image with prompt:', prompt, error);
+                imageCache.set(prompt, null);
                 return false;
             }
         }
