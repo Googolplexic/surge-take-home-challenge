@@ -1,5 +1,5 @@
 .create-button {
-    @apply w-[117px] h-[44px] flex items-center justify-center gap-2.5 text-white px-5 py-0.5 cursor-pointer opacity-100 bottom-[50px] right-[40px] rounded-xl border-none fixed z-10 p-px bg-gradient-to-b from-[#F47274] to-[#DB272A] transition-all duration-300;
+    @apply w-[117px] h-[44px] flex items-center justify-center gap-2.5 text-white px-5 py-0.5 cursor-pointer bottom-[20px] md:bottom-[50px] lg:bottom-[20px] right-[25px] rounded-xl border-none fixed z-10 bg-gradient-to-b from-[#F47274] to-[#DB272A] transition-all duration-300;
 }
 .create-button:hover {
     @apply bg-gradient-to-b from-[#EC484B] to-[#BE181B];
@@ -11,9 +11,93 @@
 .create-button:hover::before {
     @apply bg-[#F11548];
 }
-.create-text {
+.button-text {
     @apply font-medium text-base leading-normal tracking-[-0.75%] text-center align-middle relative z-10;
 }
-.create-icon {
+.button-icon {
     @apply font-medium text-2xl leading-normal tracking-[-0.75%] text-center relative z-10;
+}
+
+.modal-container {
+    @apply fixed w-screen h-screen inset-0 flex items-center justify-center z-50 bg-black/25 ;
+}
+
+.create-highlight-modal {
+    @apply bg-white rounded-xl opacity-100 relative duration-300;
+    @apply w-[calc(100vw-25px)] max-w-[350px] h-[553px];
+    @apply md:max-w-[480px];
+    @apply lg:w-[550px];
+}
+
+.modal-header {
+    @apply flex justify-between items-center p-6 border-b border-[#F3F3F3];
+}
+
+.modal-title {
+    @apply text-xl font-semibold text-gray-800;
+}
+
+.modal-close-button {
+    @apply p-2.5 absolute right-2 top-2 hover:bg-[#858585] cursor-pointer rounded-lg;
+}
+
+.x-icon {
+    @apply h-5 w-5 text-gray-700;
+}
+
+
+.create-highlight-form {
+    @apply flex flex-col gap-6 px-6 py-10 ;
+}
+.form-group {
+    @apply opacity-100 flex flex-col gap-2;
+}
+
+.form-label {
+    @apply text-sm font-medium mb-1 leading-none tracking-[-0.75%] text-gray-700;
+}
+.form-group input,
+.form-group textarea {
+    @apply w-full min-h-11 justify-between opacity-100 rounded-lg pl-3 py-2 border border-[#F3F3F3] bg-white/60 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent;
+}
+
+.form-group textarea {
+    @apply h-28 ;
+}
+
+
+.form-actions {
+    @apply flex flex-row gap-4 justify-end relative bottom-0 right-0;
+}   
+
+.form-create-button {
+    @apply w-[100px] h-11 flex items-center justify-center gap-2.5 text-white font-medium text-base leading-normal tracking-[-0.75%] text-center cursor-pointer rounded-xl border-none relative z-10 bg-gradient-to-b from-[#F47274] to-[#DB272A] transition-all duration-300;
+}
+
+.form-create-button:hover {
+    @apply bg-gradient-to-b from-[#EC484B] to-[#BE181B];
+}
+
+.form-create-button::before {
+    @apply content-[''] absolute inset-[1.25px] bg-[#FF0000] rounded-[11px] z-0 transition-all duration-300;
+}
+
+.form-create-button:hover::before {
+    @apply bg-[#F11548];
+}
+
+.form-cancel-button {
+    @apply w-[100px] h-11 flex items-center justify-center gap-2.5 text-black font-medium text-base leading-normal tracking-[-0.75%] text-center cursor-pointer rounded-xl border-none relative z-10 bg-gradient-to-b from-[#F47274] to-[#DB272A] transition-all duration-300;
+}
+
+.form-cancel-button:hover {
+    @apply bg-gradient-to-b from-[#EC484B] to-[#BE181B];
+}
+
+.form-cancel-button::before {
+    @apply content-[''] absolute inset-[1.25px] bg-white rounded-[11px] z-0 transition-all duration-300;
+}
+
+.form-cancel-button:hover::before {
+    @apply bg-gray-100;
 }

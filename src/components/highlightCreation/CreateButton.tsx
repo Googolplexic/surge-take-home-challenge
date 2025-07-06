@@ -5,8 +5,8 @@ import { CreateButtonProps } from '@/types/types';
 export default function CreateButton({ onClick }: CreateButtonProps): JSX.Element {
     return (
         <button onClick={onClick} className='create-button'>
-            <span className='create-text'>Create</span>
-            <span className='create-icon'>+</span>
+            <span className='button-text'>Create</span>
+            <span className='button-icon'>+</span>
         </button>
     );
 }
