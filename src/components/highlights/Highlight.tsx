@@ -38,7 +38,7 @@ export default function Highlight({ title, location, description }: HighlightPro
                 
                 throw new Error('No image URL returned');
             } catch (error) {
-                console.error('Failed to fetch image with prompt:', prompt, error);
+                console.log('Failed to fetch image with prompt:', prompt, error);
                 imageCache.set(prompt, null);
                 return false;
             }

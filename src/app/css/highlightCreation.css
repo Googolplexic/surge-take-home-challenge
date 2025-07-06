@@ -12,10 +12,10 @@
     @apply bg-[#F11548];
 }
 .button-text {
-    @apply font-medium text-base leading-normal tracking-[-0.75%] text-center align-middle relative z-10;
+    @apply font-medium text-base leading-normal tracking-[-0.0075em] text-center align-middle relative z-10;
 }
 .button-icon {
-    @apply font-medium text-2xl leading-normal tracking-[-0.75%] text-center relative z-10;
+    @apply font-medium text-2xl leading-normal tracking-[-0.0075em] text-center relative z-10;
 }
 
 .modal-container {
@@ -70,31 +70,40 @@
 
 
 .create-highlight-form {
-    @apply flex flex-col gap-6 px-6 py-10 ;
+    @apply flex flex-col gap-4 px-6 py-10;
+    height: calc(100% - 77px); 
 }
+
+.form-content {
+    @apply flex flex-col gap-6 flex-1;
+}
+
 .form-group {
     @apply opacity-100 flex flex-col gap-2;
 }
 
 .form-label {
-    @apply text-sm font-medium mb-1 leading-none tracking-[-0.75%] text-gray-700;
+    @apply text-sm font-medium leading-none tracking-[-0.0075em] text-gray-700;
 }
 .form-group input,
 .form-group textarea {
-    @apply w-full min-h-11 justify-between opacity-100 rounded-lg pl-3 py-2 border border-[#F3F3F3] bg-white/60 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent;
+    @apply w-full min-h-11 justify-between opacity-100 rounded-lg  border border-[#F3F3F3] bg-white/60 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent leading-none tracking-[-0.0075em];
 }
-
+.form-group input{
+    @apply pl-3;
+}
 .form-group textarea {
-    @apply h-28 ;
+    
+    @apply p-3 h-32 max-h-32;
 }
 
 
 .form-actions {
-    @apply flex flex-row gap-4 justify-end relative bottom-0 right-0;
-}   
+    @apply flex flex-row gap-4 justify-end mt-auto;
+}
 
 .form-create-button {
-    @apply w-[100px] h-11 flex items-center justify-center gap-2.5 text-white font-medium text-base leading-normal tracking-[-0.75%] text-center cursor-pointer rounded-xl border-none relative z-10 bg-gradient-to-b from-[#F47274] to-[#DB272A] transition-all duration-300;
+    @apply w-[100px] h-11 flex items-center justify-center gap-2.5 text-white font-medium text-base leading-normal tracking-[-0.0075em] text-center cursor-pointer rounded-xl border-none relative z-10 bg-gradient-to-b from-[#F47274] to-[#DB272A] transition-all duration-300;
 }
 
 .form-create-button:hover {
@@ -110,11 +119,11 @@
 }
 
 .form-cancel-button {
-    @apply w-[100px] h-11 flex items-center justify-center gap-2.5 text-black font-medium text-base leading-normal tracking-[-0.75%] text-center cursor-pointer rounded-xl border-none relative z-10 bg-gradient-to-b from-[#F47274] to-[#DB272A] transition-all duration-300;
+    @apply w-[100px] h-11 flex items-center justify-center gap-2.5 text-black font-medium text-base leading-normal tracking-[-0.0075em] text-center cursor-pointer rounded-xl border-none relative z-10 bg-gradient-to-b from-[#F47274] to-[#DB272A] transition-all duration-300;
 }
 
-.form-cancel-button:hover {
-    @apply bg-gradient-to-b from-[#EC484B] to-[#BE181B];
+.form-cancel-button:hover::before {
+    @apply bg-[#F3F3F3];
 }
 
 .form-cancel-button::before {

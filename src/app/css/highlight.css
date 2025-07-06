@@ -24,9 +24,9 @@
 }
 
 .highlight-location {
-    @apply text-sm font-normal leading-normal tracking-[-0.0075em] align-middle opacity-60;
+    @apply text-sm font-normal leading-none tracking-[-0.0075em] align-middle opacity-60;
 }
 
 .highlight-description {
-    @apply text-sm font-normal leading-[150%] tracking-[-0.75%] align-middle line-clamp-3;
+    @apply text-sm font-normal leading-normal tracking-[-0.0075em] align-middle line-clamp-3;
 }

@@ -18,7 +18,7 @@ export default function CreateHighlightModal({ isOpen, onClose, onSubmit }: Crea
         setTimeout(() => {
             setIsClosing(false);
             onClose();
-        }, 250); 
+        }, 250);
     };
 
     if (!isOpen && !isClosing) return null;
@@ -52,19 +52,21 @@ export default function CreateHighlightModal({ isOpen, onClose, onSubmit }: Crea
                 </div>
 
                 <form onSubmit={handleSubmit} className='create-highlight-form'>
-                    <div className="form-group">
-                        <label htmlFor="title" className="form-label">Highlight name <span className='text-red-500'>*</span></label>
-                        <input type="text" id="title" name="title" required />
-                    </div>
+                    <div className="form-content">
+                        <div className="form-group">
+                            <label htmlFor="title" className="form-label">Highlight name <span className='text-red-500'>*</span></label>
+                            <input type="text" id="title" name="title" required />
+                        </div>
 
-                    <div className="form-group">
-                        <label htmlFor="location" className="form-label">Location <span className='text-red-500'>*</span></label>
-                        <input type="text" id="location" name="location" required />
-                    </div>
+                        <div className="form-group">
+                            <label htmlFor="location" className="form-label">Location <span className='text-red-500'>*</span></label>
+                            <input type="text" id="location" name="location" required />
+                        </div>
 
-                    <div className="form-group">
-                        <label htmlFor="description" className="form-label">Description <span className='text-red-500'>*</span></label>
-                        <textarea id="description" name="description" required></textarea>
+                        <div className="form-group">
+                            <label htmlFor="description" className="form-label">Description <span className='text-red-500'>*</span></label>
+                            <textarea id="description" name="description" required></textarea>
+                        </div>
                     </div>
 
 
