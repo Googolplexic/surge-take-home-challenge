@@ -29,8 +29,57 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Prerequisites
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Install the Vercel CLI globally:
+
+```bash
+npm install -g vercel
+```
+
+1. Login to your Vercel account:
+
+```bash
+vercel login
+```
+
+### Deploy to Vercel
+
+#### Production Deployment
+
+```bash
+npm run deploy
+# or
+vercel --prod
+```
+
+#### Preview Deployment
+
+```bash
+npm run deploy-preview
+# or
+vercel
+```
+
+### Automatic Deployments
+
+This project is configured for automatic deployments when connected to a Git repository:
+
+- **Production**: Deployments are triggered on pushes to the `main` branch
+- **Preview**: Deployments are triggered on pushes to any other branch or pull requests
+
+### Environment Variables
+
+If your application uses environment variables, add them in the Vercel dashboard:
+
+1. Go to your project settings on Vercel
+2. Navigate to the "Environment Variables" section
+3. Add your variables for different environments (Production, Preview, Development)
+
+### Configuration Files
+
+- `vercel.json`: Main Vercel configuration
+- `.vercelignore`: Files to ignore during deployment
+- `next.config.ts`: Next.js configuration optimized for Vercel

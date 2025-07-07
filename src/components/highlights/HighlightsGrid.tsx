@@ -37,8 +37,6 @@ export default function HighlightsGrid({ highlights }: HighlightsGridProps): JSX
         columns[columnIndex].push(highlight);
     });
 
-    console.log("Columns:", columns);
-
     return (
         <section className="highlights-grid-columns">
             {columns.map((columnHighlights, columnIndex) => (
